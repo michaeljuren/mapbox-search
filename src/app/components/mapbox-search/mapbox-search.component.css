@@ -1,0 +1,23 @@
+.mapbox-search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-full-width {
+  width: 100%;
+}
+
+.search-results-container {
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+mat-selection-list {
+  padding: 0;
+}

@@ -1,0 +1,23 @@
+<div class="mapbox-search-container">
+  <mat-form-field appearance="outline" class="search-full-width">
+    <mat-label>Search for a location</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+    />
+    <mat-spinner *ngIf="isLoading" diameter="20" matSuffix></mat-spinner>
+    <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="search-results-container" *ngIf="searchResults.length > 0">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option *ngFor="let result of searchResults" (click)="selectLocation(result)">
+        {{ result.place_name }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

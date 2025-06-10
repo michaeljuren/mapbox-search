@@ -5,6 +5,7 @@
       matInput
       type="text"
       [(ngModel)]="searchTerm"
+      placeholder="Enter location to search"
       (input)="onSearchChange()"
     />
     <mat-spinner *ngIf="isLoading" diameter="20" matSuffix></mat-spinner>

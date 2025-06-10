@@ -39,4 +39,4 @@ import { MatListModule } from '@angular/material/list';
   providers: [MapboxServiceService, provideHttpClient()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

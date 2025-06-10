@@ -29,24 +29,34 @@ export class AppComponent implements OnInit {
   onLocationSelected(location: any) {
     this.selectedLocation = location;
 
-    // If location is null or empty, clear the map
+    //if location is null or empty, clear the map
     if (!location || !location.center) {
+      this.cleanupMap();
       return;
     }
 
     // Use Angular's change detection cycle to ensure the map container is ready
     setTimeout(() => {
       this.initOrUpdateMap(location);
-    });
+    }, 10);
   }
+
   initOrUpdateMap(location: any) {
+    // Check if existing map container is still valid
+    if (this.map && (!this.map.getContainer() || !this.map.getContainer().isConnected)) {
+      this.cleanupMap();
+    }
+
     if (!this.map) {
       this.initializeMap(location);
     } else {
+      // Ensure map is properly sized
+      this.map.resize();
+
       // Update existing map
       this.map.flyTo({
-        center: location.center,
-        zoom: 14
+         center: location.center,
+          zoom: 14
       });
 
       // Update marker position
@@ -55,7 +65,7 @@ export class AppComponent implements OnInit {
       }
 
       this.marker = new mapboxgl.Marker()
-        .setLngLat(location.center)
+       .setLngLat(location.center)
         .addTo(this.map);
     }
   }
@@ -69,7 +79,7 @@ export class AppComponent implements OnInit {
         // Wait for next change detection cycle and try again
         setTimeout(() => {
           this.initializeMap(location);
-        }, 100);
+        }, 10);
         return;
       }
 
@@ -102,4 +112,21 @@ export class AppComponent implements OnInit {
       console.error('Error initializing Mapbox map:', error);
     }
   }
+
+  cleanupMap() {
+    if (this.marker) {
+      this.marker.remove();
+      this.marker = undefined;
+    }
+    if (this.map) {
+      this.map.remove();
+      this.map = undefined;
+    }
+
+    this.mapInitialized = false;
+  }
+
+  ngOnDestroy() {
+  this.cleanupMap();
+}
 }

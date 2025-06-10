@@ -60,12 +60,13 @@ export class MapboxSearchComponent implements OnInit {
     this.searchTerm = location.place_name;
     this.searchResults = [];
     this.locationSelected.emit(location);
+    console.log('Selected location:', location);
   }
 
   clearSearch(): void {
   this.searchTerm = '';
   this.searchResults = [];
   this.locationSelected.emit(null);
-}
+  }
 }
 

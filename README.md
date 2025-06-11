@@ -1,59 +1,86 @@
-# MapboxSearch
+# Mapbox Search
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+An Angular application that integrates Mapbox functionality for interactive mapping and location search features.
 
-## Development server
+## Prerequisites
 
-To start a local development server, run:
+- Node.js (version 18.x or higher recommended)
+- npm (comes with Node.js)
+- Angular CLI (`npm install -g @angular/cli`)
+- Mapbox API key (Get one at [mapbox.com](https://www.mapbox.com/))
 
-```bash
-ng serve
+## Installation
+
+1. Clone this repository
+   ```bash
+   git clone https://github.com/michaeljuren/mapbox-search.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure your Mapbox API key (see Configuration section)
+
+## Configuration
+
+Add your Mapbox API key to the environment file at `src/environments/environment.ts`:
+
+```typescript
+export const environment = {
+  production: false,
+  mapboxAccessToken: 'YOUR_MAPBOX_ACCESS_TOKEN'
+};
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Development
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Run the development server:
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you change any of the source files.
 
 ## Building
 
-To build the project run:
+Build the project:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Testing
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Run unit tests:
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Run end-to-end tests:
 
 ```bash
-ng e2e
+npm run e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Features
 
-## Additional Resources
+- Interactive maps powered by Mapbox
+- Location search functionality
+- [Add other features specific to your implementation]
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Technologies
+
+- Angular 19.0.7
+- TypeScript
+- Mapbox GL JS
+- Mapbox Search API
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+
